@@ -17,7 +17,7 @@
 
   <body>
     <div class="wrapper">
-      <div class="page-head">
+      <header>
         <img src="./app/assets/logo.svg" class="logo" alt="logo GitFav" />
         <label class="sr-only" for="username">Insert GitHub username</label>
         <div class="input-wrapper">
@@ -26,7 +26,7 @@
             id="username"
             placeholder="Insert GitHub username"
           />
-          <button>
+          <button id="search">
             <svg
               width="23"
               height="21"
@@ -44,36 +44,29 @@
             Add
           </button>
         </div>
-      </div>
+      </header>
 
-      <table>
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Repos</th>
-            <th>Followers</th>
-            <th></th>
-          </tr>
-        </thead>
+      <main id="root">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Repos</th>
+              <th>Followers</th>
+              <th></th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td class="user">
-              <img
-                src="http://github.com/m0nicavaz.png"
-                alt="foto de monica vaz"
-              />
-              <a href="http://github.com/m0nicavaz">
-                <p>Monica Vaz</p>
-                <span>/m0nicavaz</span>
-              </a>
-            </td>
-            <td class="repositories">123</td>
-            <td class="followers">1000</td>
-            <td class="remove">&times;</td>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            <tr>
+              <td class="empty-row">
+                <img src="./app/assets/starface.svg" alt="star with a face" />
+                <span>You don't have any favorites</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
     </div>
 
     <script src="./app/js/index.js" type="module"></script>

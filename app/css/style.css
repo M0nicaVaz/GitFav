@@ -5,9 +5,9 @@
 }
 
 :root {
-  --hue: 185;
+  --hue: 200;
   --btn-primary: hsl(var(--hue), 91%, 25%);
-  --table-head: hsl(var(--hue), 89%, 14%);
+  --header: hsl(var(--hue), 89%, 14%);
   --table-text: hsl(0, 0%, 77%);
   --row-light: hsl(var(--hue), 65%, 7%);
   --row-dark: hsla(var(--hue), 64%, 6%, 0.5);
@@ -31,16 +31,31 @@ body {
   display: grid;
 
   padding: 3rem 0;
-  overflow-x: hidden;
+  width: 100vw;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--header);
+  border-radius: 6px;
 }
 
 .wrapper {
-  width: min(90vw, 112rem);
+  width: min(85vw, 112rem);
   justify-self: center;
   text-align: center;
+
+  position: relative;
 }
 
-.page-head {
+header {
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
@@ -48,11 +63,11 @@ body {
   gap: 2.5rem;
 }
 
-.page-head .logo {
+header .logo {
   width: clamp(14rem, 14rem + 0.5vw, 18.7rem);
 }
 
-.page-head button {
+header button {
   background-color: var(--btn-primary);
   border: none;
   border-radius: 0.5rem;
@@ -70,28 +85,34 @@ body {
   cursor: pointer;
 }
 
-.page-head button:hover {
+header button:hover {
   background: var(--table-text);
   color: var(--btn-primary);
 }
 
-.page-head button:hover svg path {
+header button:hover svg path {
   fill: var(--btn-primary);
 }
 
-.page-head .input-wrapper {
+header .input-wrapper {
   display: flex;
 
   gap: 0.8rem;
 }
 
-.page-head input {
+header input {
   padding: 1.2rem 3.2rem;
   background-color: var(--row-light);
   border: none;
   color: white;
   border-radius: 0.5rem;
   width: min(60vw, 46rem);
+}
+
+main#root {
+  overflow: auto;
+  max-height: 65vh;
+  height: 60rem;
 }
 
 table {
@@ -102,40 +123,43 @@ table {
   font-size: clamp(1.2rem, 1.2rem + 0.2vw, 1.4rem);
 
   box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
-  overflow: auto;
+  overflow: hidden;
 
   position: relative;
 }
 
-thead th {
-  background-color: var(--table-head);
+table thead th {
+  background-color: var(--header);
   font-weight: bold;
   padding: 1.6rem;
+
+  position: sticky;
+  top: 0;
 }
 
-thead th:first-child {
+table thead th:first-child {
   border-top-left-radius: 0.4rem;
 }
 
-thead th:last-child {
+table thead th:last-child {
   border-top-right-radius: 0.4rem;
 }
 
-tbody tr:nth-child(odd) {
+table tbody tr:nth-child(odd) {
   background-color: var(--row-dark);
   border-bottom: 1px solid hsla(191, 31%, 42%, 1);
 }
 
-tbody tr:nth-child(even) {
+table tbody tr:nth-child(even) {
   background-color: var(--row-light);
   border-bottom: 1px solid hsla(191, 31%, 42%, 0.5);
 }
 
-tbody td {
+table tbody td {
   padding: 1.6rem;
 }
 
-tbody td a {
+table tbody td a {
   display: block;
   line-height: 2.6rem;
 
@@ -144,34 +168,36 @@ tbody td a {
   font-weight: bold;
 }
 
-tbody td span {
+table tbody td span {
   line-height: 2.6rem;
 }
 
-tbody .user {
+table tbody .user {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
 }
 
-tbody td img {
+table tbody td img {
   width: 5.6rem;
   height: 5.6rem;
   border-radius: 50%;
 }
 
-tbody td:last-child {
+table tbody td:last-child {
   color: var(--remove-clr);
   cursor: pointer;
   font-weight: bold;
+  font-size: clamp(2rem, 2rem + 0.2vw, 2.8rem);
 }
 
-tbody td.empty-row {
+table tbody td.empty-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 2rem;
+  gap: 1rem;
 
   color: #4e5455;
   width: 100%;
@@ -197,35 +223,35 @@ tbody td.empty-row {
 }
 
 @media screen and (min-width: 830px) {
-  .page-head {
+  header {
     grid-template-columns: 1fr 2fr;
     align-items: center;
     gap: 0;
   }
 
-  .page-head input {
+  header input {
     width: 46rem;
   }
 
-  .page-head .input-wrapper {
+  header .input-wrapper {
     justify-self: end;
   }
 
-  .page-head button {
+  header button {
     padding: 1.2rem 3.2rem;
   }
 
-  tbody td,
-  thead th {
+  table tbody td,
+  table thead th {
     padding: 1.6rem 4rem;
     padding: 1.6rem 4rem;
   }
 
-  tbody .user {
+  table tbody .user {
     flex-direction: row;
   }
 
-  tbody td.empty-row {
-    gap: 6rem;
+  table tbody td.empty-row {
+    gap: 2rem;
   }
 }
