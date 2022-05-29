@@ -30,7 +30,6 @@ body {
   min-height: 100vh;
   display: grid;
 
-  padding: 3rem 0;
   width: 100vw;
 }
 
@@ -50,8 +49,8 @@ body {
 .wrapper {
   width: min(85vw, 112rem);
   justify-self: center;
-  text-align: center;
 
+  padding: 6rem 0 3rem;
   position: relative;
 }
 

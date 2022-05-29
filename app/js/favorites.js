@@ -70,6 +70,8 @@ export class FavoritesView extends Favorites {
     inputBtn.onclick = () => {
       const { value } = document.querySelector('#username');
       this.add(value);
+
+      document.querySelector('#username').value = '';
     };
   }
 
